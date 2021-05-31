@@ -6,11 +6,14 @@ const commanQueries = require("../models/commanQueries");
 
 // Comman Queries
 // commanQueries.creteOrderTable()
-// commanQueries.dropTable('products')
+// commanQueries.dropTable('orders')
 
 router.get("/", checkauth, orderController.getAll);
 router.get("/get/:id", checkauth, orderController.getById);
 router.post("/", orderController.create);
+router.get("/filter/", checkauth, orderController.filter);
+router.get("/pagination/", checkauth, orderController.paginate);
+
 router.delete("/:id", checkauth, orderController.deleteById);
 
 module.exports = router;

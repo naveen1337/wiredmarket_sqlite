@@ -55,8 +55,8 @@ exports.creteOrderTable = async () => {
 		table.string("time").notNullable();
 		table.text("items").notNullable();
 		table.integer("total").notNullable();
-		table.string("confirmed").notNullable();
-		table.string("status").notNullable();
+		table.integer("confirmed").notNullable();
+		table.integer("status").notNullable();
 		table.string("customer_name").notNullable();
 		table.string("contact").notNullable();
 		table.string("address").notNullable();

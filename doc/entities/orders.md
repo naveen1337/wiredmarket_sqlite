@@ -14,7 +14,4 @@ paid:
 rzpayment_id:
 rzsignature:
 
-```sql
 
-
-```

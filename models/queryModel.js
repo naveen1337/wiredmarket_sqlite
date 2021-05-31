@@ -14,6 +14,7 @@ class Query {
 				? successResponse(result)
 				: failResponse(`No ${this.name} Found`);
 		} catch (err) {
+			// console.log(err)
 			return {
 				response: false,
 				message: err,
@@ -83,6 +84,33 @@ class Query {
 			};
 		}
 	}
+	async filter(payload) {
+		try {
+			const result = await db.select("*").where(payload.column, payload.value).from(this.database)
+			return result && result.length > 0
+				? successResponse(result)
+				: failResponse(`No ${this.name} Found`);
+		} catch (err) {
+			return {
+				response: false,
+				message: err,
+			};
+		}
+	}
+	async paginate(limit,offset) {
+		try {
+			const result = await db.select("*").from(this.database).limit(limit).offset(offset)
+			return result && result.length > 0
+				? successResponse(result)
+				: failResponse(`No ${this.name} Found`);
+		} catch (err) {
+			return {
+				response: false,
+				message: err,
+			};
+		}
+	}
+	
 }
 
 const successResponse = (data) => ({ response: true, data: data });
